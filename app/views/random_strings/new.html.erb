@@ -1,0 +1,32 @@
+<div class="container">
+  <div class="jumbotron">
+    <h2>Generate a random number</h2>
+  </div>
+  
+  <%= form_for @random_string, html: {class: 'form-inline'} do |f| %>
+
+  <%= label_tag 'batch', 'Batch Mode' %>
+    <%= check_box_tag 'batch' %>
+
+  <div class="input-group col-md-2">
+    <%= number_field_tag 'quantity', '2', min: '2', max: '1000', class: 'form-control' %>
+    <span class="input-group-addon">Numbers</span>
+  </div>
+  
+  <div class="input-group col-md-2">
+    <span class="input-group-addon"> Between </span>
+    <%= number_field_tag 'minimum', default_minimum.to_s, class: 'form-control' %>
+  </div>
+  <div class="input-group col-md-2">
+    <span class="input-group-addon">and</span> 
+    <%= number_field_tag 'maximum', default_maximum.to_s, class: 'form-control' %>
+  </div>
+  
+ <div class="input-group col-md-2">
+   <span class="input-group-addon">Prefix</span>
+    <%= text_field_tag 'prefix', nil, placeholder: 'Optional prefix...', class: 'form-control' %>
+  </div>
+  
+   <%= f.submit 'Generate!', class: 'btn btn-default btn-lg'%>
+  <% end %>
+</div>

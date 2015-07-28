@@ -1,0 +1,35 @@
+<div class="container">
+  <table class="table table-striped table-hover">
+    <tr>
+      <td>
+      </td>
+      <th>
+        <span class="pull-right">
+          Export
+          <span class="glyphicon glyphicon-export"></span>
+        </span>
+      </th>
+      <td>
+        <span class="pull-right">
+        <%= link_to 'CSV', random_strings_path + '.csv', class: 'btn btn-default btn-lg' %>
+        <%= link_to 'Excel', random_strings_path + '.xls', class: 'btn btn-default btn-lg' %>
+        </span>
+      <td>
+    </tr>
+    <tr>
+      <th><%= check_box_tag 'select_all_random_strings', 'all'%></th>
+      <th>Random Number</th>
+      <th>Generated</th>
+    </tr>
+    
+    <% @random_strings.each do |random_string| %>
+      <tr>
+        <td><%= check_box_tag 'random_string_ids[]', random_string.id %></td>
+        <td><%= random_string.random_value %></td>
+        <td><%= time_tag random_string.created_at %></td>
+    </tr>
+    <% end %>
+    
+    <%= paginate @random_strings %>
+  </table>
+</div>
